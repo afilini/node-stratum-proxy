@@ -67,20 +67,11 @@ var proxies = {}
 var ProxyObject = function(socket, proxy) {
     var self = this
 
+    self.submitBuffer = ''
+
     this.log = function(message) {
         var self = this
-        var prefix = '(' + Object.keys(proxies).length + ')[' + self.id + ']'
-        if (self.client) {
-            prefix += '[' + self.client.remoteAddress + ':' + self.client.remotePort + '<-' + self.client.localAddress + ':' + self.client.localPort + ']'
-        } else {
-            prefix += '[null]'
-        }
-        if (self.socket) {
-            prefix += '[' + self.socket.localAddress + ':' + self.socket.localPort + '<-' + self.socket.remoteAddress + ':' + self.socket.remotePort + ']'
-        } else {
-            prefix += '[null]'
-        }
-        console.log(prefix + '\n' + message)
+        console.log(message)
     }
     this.destroy = function() {
         var self = this
@@ -119,11 +110,36 @@ var ProxyObject = function(socket, proxy) {
         self.socket = null
         self.destroy()
     }
-    this.onServerData = function(data) {
+    this.onServerData = function(data, fromBuffer=false) {
         var self = this
         if ((self.client) && (self.client.remoteAddress)) {
-            self.log('Q: ' + data)
-            self.client.write(data)
+            try {
+                var jsonObj = JSON.parse(data);
+
+                if (jsonObj.method) {
+                    if (jsonObj.method === 'mining.authorize') {
+                        jsonObj.params = [self.proxy.user, self.proxy.password];
+                    } else if (jsonObj.method === 'mining.submit') {
+                        jsonObj.params[0] = self.proxy.user;
+                    }
+                }
+
+                self.client.write(JSON.stringify(jsonObj) + '\n');
+                self.log('Q: ' + JSON.stringify(jsonObj));
+
+                return true;
+            } catch (e) {
+                if (fromBuffer) {
+                    return false;
+                }
+
+                self.submitBuffer += data;
+
+                var done = self.onServerData(self.submitBuffer, true);
+                if (done) {
+                    self.submitBuffer = '';
+                }
+            }
         } else {
             self.log('B: ' + data)
             self.buffer += data

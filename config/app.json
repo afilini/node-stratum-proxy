@@ -13,7 +13,9 @@
             "connect": {
                 "host": "scrypt.ltcrabbit.com",
                 "port": 3333
-            }
+            },
+            "user": "newuser",
+            "password": "x"
         }, {
             "comment": "1028 fixed difficulty, ASICs, > 15 MH",
             "listen": {
@@ -22,7 +24,9 @@
             "connect": {
                 "host": "scrypt.ltcrabbit.com",
                 "port": 3335
-            }
+            },
+            "user": "newuser",
+            "password": "x"
         }, {
             "comment": "2048 fixed difficulty, ASICs, > 30 MH",
             "listen": {
@@ -31,7 +35,9 @@
             "connect": {
                 "host": "scrypt.ltcrabbit.com",
                 "port": 3336
-            }
+            },
+            "user": "newuser",
+            "password": "x"
         }, {
             "comment": "4096 fixed difficulty, ASICs, > 50 MH",
             "listen": {
@@ -40,7 +46,9 @@
             "connect": {
                 "host": "scrypt.ltcrabbit.com",
                 "port": 3337
-            }
+            },
+            "user": "newuser",
+            "password": "x"
         }, {
             "comment": "8192 fixed difficulty, ASICs, > 100 MH",
             "listen": {
@@ -49,7 +57,9 @@
             "connect": {
                 "host": "scrypt.ltcrabbit.com",
                 "port": 3338
-            }
+            },
+            "user": "newuser",
+            "password": "x"
         }, {
             "comment": "16 fixed difficulty, cpuminer/behind firewall",
             "listen": {
@@ -58,7 +68,9 @@
             "connect": {
                 "host": "lowdiff.ltcrabbit.com",
                 "port": 80
-            }
+            },
+            "user": "newuser",
+            "password": "x"
         }, {
             "listen": {
                 "port": 3340
@@ -66,7 +78,9 @@
             "connect": {
                 "host": "ltc.ghash.io",
                 "port": 3333
-            }
+            },
+            "user": "newuser",
+            "password": "x"
         }, {
             "listen": {
                 "port": 4444
@@ -74,7 +88,9 @@
             "connect": {
                 "host": "drk.ghash.io",
                 "port": 3333
-            }
+            },
+            "user": "newuser",
+            "password": "x"
         }, {
             "listen": {
                 "port": 4445
@@ -82,7 +98,9 @@
             "connect": {
                 "host": "x11.ltcrabbit.com",
                 "port": 3332
-            }
+            },
+            "user": "newuser",
+            "password": "x"
         }, {
             "comment": "Scrypt pool.minebitshares.com (allowing for a range of 256 to 4096)",
             "listen": {
@@ -91,7 +109,9 @@
             "connect": {
                 "host": "btsx.minebitshares.com",
                 "port": 4444
-            }
+            },
+            "user": "newuser",
+            "password": "x"
         }, {
             "comment": "Scrypt pool.minebitshares.com (High diff allows a range of 4096 to 32768)",
             "listen": {
@@ -100,7 +120,9 @@
             "connect": {
                 "host": "btsx.minebitshares.com",
                 "port": 4445
-            }
+            },
+            "user": "newuser",
+            "password": "x"
         }, {
             "comment": "X11 pool.minebitshares.com",
             "listen": {
@@ -109,7 +131,9 @@
             "connect": {
                 "host": "btsx.minebitshares.com",
                 "port": 5555
-            }
+            },
+            "user": "newuser",
+            "password": "x"
         }]
     },
     "development": {},
